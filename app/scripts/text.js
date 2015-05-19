@@ -86,4 +86,6 @@
 
 	   return textGeo;
     }
+    
+    w.Text = Text;
 })(window);

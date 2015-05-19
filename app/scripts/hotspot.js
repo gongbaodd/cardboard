@@ -41,4 +41,6 @@
     Hotspot.prototype = Object.create(THREE.Object3D.prototype);
     Hotspot.prototype.constructor = Hotspot;
     
+    w.Hotspot = Hotspot;
+    
 })(window);
