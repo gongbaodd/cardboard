@@ -1,7 +1,7 @@
 'use strict';
 (function(w){
     var THREE = w.THREE;
-    function HomeFace(scene){
+    function HomeFace(scene,camera){
         THREE.Object3D.call(this);
         scene.face = this;
         
