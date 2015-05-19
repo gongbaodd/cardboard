@@ -26,7 +26,6 @@ gulp.task('styles', function () {
 gulp.task('jshint', function () {
   return gulp.src('app/scripts/**/*.js')
     .pipe(reload({stream: true, once: true}))
-    .pipe($.babel())
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
@@ -37,7 +36,6 @@ gulp.task('html', ['styles'], function () {
 
   return gulp.src('app/*.html')
     .pipe(assets)
-    .pipe($.if('*.js', $.babel()))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
@@ -48,13 +46,13 @@ gulp.task('html', ['styles'], function () {
 
 gulp.task('images', function () {
   return gulp.src('app/images/**/*')
-    .pipe($.cache($.imagemin({
-      progressive: true,
-      interlaced: true,
-      // don't remove IDs from SVGs, they are often used
-      // as hooks for embedding and styling
-      svgoPlugins: [{cleanupIDs: false}]
-    })))
+//    .pipe($.cache($.imagemin({
+//      progressive: true,
+//      interlaced: true,
+//      // don't remove IDs from SVGs, they are often used
+//      // as hooks for embedding and styling
+//      svgoPlugins: [{cleanupIDs: false}]
+//    })))
     .pipe(gulp.dest('dist/images'));
 });
 

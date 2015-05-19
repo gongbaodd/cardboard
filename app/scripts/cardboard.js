@@ -34,12 +34,13 @@
     }
 
     Cardboard.prototype.initControls = function(e) {
+//        console.log(e);
         if(e.alpha) {
             w.removeEventListener('deviceorientation',this._initControls,false);
             this.renderer.domElement.addEventListener('click',this.fullscreen.bind(this),false);
 
-            this.orbitControls.enable = false;
-
+            this.orbitControls.enabled = false;
+                
             this.controls.connect();
             this.controls.update();
         }
@@ -68,7 +69,8 @@
             this.resize();
         }
         this.camera.updateProjectionMatrix();
-        if(this.controls.freeze === false){
+        
+        if(this.orbitControls.enabled !== true){
             this.controls.update();
         } else {
             this.orbitControls.update();

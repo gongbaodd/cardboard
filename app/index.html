@@ -29,15 +29,23 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="/bower_components/hasjs/has.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/threejs/build/three.min.js"></script>
     <script src="/bower_components/threejs/examples/js/effects/StereoEffect.js"></script>
     <script src="/bower_components/threejs/examples/js/controls/DeviceOrientationControls.js"></script>
     <script src="/bower_components/threejs/examples/js/controls/OrbitControls.js"></script>
+    <script src="/bower_components/threejs/examples/js/libs/stats.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
         <!-- build:js scripts/main.js -->
+        <script src="scripts/status.js"></script>
         <script src="scripts/cardboard.js"></script>
+        <script src="scripts/hotspot.js"></script>
+        <script src="scripts/skydom.js"></script>
+        <script src="scripts/cursor.js"></script>
+        <script src="scripts/homeFace.js"></script>
+        <script src="scripts/controllers/MainController.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
