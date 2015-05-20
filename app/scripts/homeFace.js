@@ -10,14 +10,9 @@
         this.Lights = new w.Lights(scene);
         
         this.cards = new w.Cards(scene,camera,w.manifest);
-        
-        
-//        self.cards = new w.Cards(scene,camera,[]);
-//        
+
 //        scene.add(self);
-        
-//        console.log(scene);
-        
+
      
         this.remove = function() {
             this.background.remove();

@@ -51,6 +51,8 @@
         //cursur
         this.cursor.scale.set(1,1,1);
         
+//        console.log(intersects);
+
         if(intersects.length>0){
             var found = intersects[0];
             
@@ -63,6 +65,7 @@
                 };
             }else{
                 if(this.selected.id === found.object.uuid){
+//                    console.log(this.selected)
                     if(this.selected.obj.parent.onFocus !== undefined){
                         this.selected.ttl -= 1;
                         var p = (this.selected.ttl / TTL);

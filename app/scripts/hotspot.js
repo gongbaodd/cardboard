@@ -3,6 +3,7 @@
     var THREE = w.THREE;
     
     function Hotspot(scene,camera,args){
+
         THREE.Object3D.call(this);
         
         var rectShape = new THREE.Shape();
@@ -17,6 +18,7 @@
         var rectGeom = new THREE.ShapeGeometry(rectShape);
         var rectMesh = new THREE.Mesh(rectGeom,new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:args.showHotspot?0.5:0.0}));
         
+
         this.rectMesh = rectMesh;
         
         var phi = (args.verticalDegree)*Math.PI/180;
@@ -37,6 +39,8 @@
             scene.intersectables.splice($.inArray(this.children[0],scene.intersctables),1);
             scene.remove(this);
         };
+
+        console.log(123);
     }
     Hotspot.prototype = Object.create(THREE.Object3D.prototype);
     Hotspot.prototype.constructor = Hotspot;

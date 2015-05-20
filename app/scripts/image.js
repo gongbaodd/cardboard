@@ -5,7 +5,7 @@
     function Image3D(scene,camera,texture,args){
         THREE.Object3D.call(this);
         
-        var geometry = new THREE.PlaneBufferGeometry(texture.image.width/args.scale||100,texture.image.height/args.scale||100);
+        var geometry = new THREE.PlaneBufferGeometry(texture.image.width/args.scale||10,texture.image.height/args.scale||10);
         var material = new THREE.MeshBasicMaterial({
             map:texture,
             transparent:true,
@@ -17,6 +17,8 @@
         this.camera = camera;
         this.add(mesh);
         this.args = args;
+        this.onFocus = args.onFocus;
+        this.onBlur = args.onBlur;
         this.degree = args.degree;
         this.updatePosition();
         this.intersectable = this.args.onFocus!==undefined||this.args.onBlur!==undefined;

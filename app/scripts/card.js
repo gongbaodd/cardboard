@@ -18,7 +18,7 @@
                 var degree = -80+180/(elems.length+1)*index;
 //                console.log(degree)
                 var radius = 15;
-                var vdegree = -25;
+                var vdegree = -15;
                 var text = new w.Text(scene,camera,{
                     text:elem.title,
                     radius:radius,
@@ -28,25 +28,28 @@
                     size:1
                 });
                 var image = new w.Image3D(scene,camera,texture,{
-                    scale:5,
+                    scale:4,
                     degree:degree,
                     verticalDegree:vdegree+20,
-                    radius:radius
-                });
-                var hotspot = new w.Hotspot(scene,camera,{
-                    rectLength:5,
-                    rejectWith:11,
-                    degree:degree,
                     radius:radius,
-                    verticalDegree:vdegree,
-                    showHotspot:scene.showHotspot,
                     onFocus:function(){
-                        console.log('focused');
+                        console.log(1);
                     }
                 });
+//                var hotspot = new w.Hotspot(scene,camera,{
+//                    rectLength:10,
+//                    rectWidth:10,
+//                    degree:degree,
+//                    radius:radius,
+//                    verticalDegree:vdegree,
+//                    showHotspot:scene.showHotspot,
+//                    onFocus:function(){
+//                        console.log('focused');
+//                    }
+//                });
                 obj.text = text;
                 obj.image = image;
-                obj.hotspot = hotspot;
+//                obj.hotspot = hotspot;
                 self.elems.push(obj);
             });
         });
@@ -57,7 +60,7 @@
             this.elems.forEach(function(elem){
                 elem.text.remove();
                 elem.image.remove();
-                elem.hotspot.remove();
+//                elem.hotspot.remove();
             });
             scene.remove(self);
         };
