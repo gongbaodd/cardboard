@@ -8,6 +8,7 @@
 //        console.log(cardboard.camera.position)
         
         cardboard.scene.add(mainController);
+        cardboard.scene.controller = mainController;
         cardboard.camera.add(cursor);
         cursor.position.z = -9;
 	    cursor.lookAt(cardboard.camera.position);
@@ -26,6 +27,8 @@
             mainController.update();
         };
         
+        w.scene = cardboard.scene;
+        w.camera = cardboard.camera;
 
         document.getElementById('scene').appendChild(cardboard.renderer.domElement);
     }main();

@@ -30,7 +30,7 @@
         }
         this.remove = function(){
             if(this.intersectable){
-                scene.iintersectables.splice($.inArray(this.children[0],scene.intersectables),1);
+                scene.intersectables.splice($.inArray(this.children[0],scene.intersectables),1);
             }
             scene.remove(this);
         };

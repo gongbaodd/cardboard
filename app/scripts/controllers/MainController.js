@@ -23,8 +23,10 @@
         }
         
         //Start Home
+
         var face = new w.HomeFace(scene,camera);
         scene.add(face);
+        scene.face = face;
         
         this.removeFace = function(face) {
             scene.intersectables = [];
@@ -72,7 +74,7 @@
                         this.cursor.scale.set(p,p,p);
                         if(this.selected.ttl<=1){
                             this.selected.obj.parent.onFocus();
-                            this.selected = null;
+                            this.selected = undefined;
                         }
                     }
                 }else{

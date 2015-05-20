@@ -15,7 +15,7 @@
                 obj.prototype = Object.create(THREE.Object3D.prototype);
                 obj.constructor = obj;
                 
-                var degree = -80+180/(elems.length+1)*index;
+                var degree = -60+180/(elems.length+1)*index;
 //                console.log(degree)
                 var radius = 15;
                 var vdegree = -15;
@@ -33,23 +33,12 @@
                     verticalDegree:vdegree+20,
                     radius:radius,
                     onFocus:function(){
-                        console.log(1);
+                        location.hash = '#!/'+elem.url;
                     }
                 });
-//                var hotspot = new w.Hotspot(scene,camera,{
-//                    rectLength:10,
-//                    rectWidth:10,
-//                    degree:degree,
-//                    radius:radius,
-//                    verticalDegree:vdegree,
-//                    showHotspot:scene.showHotspot,
-//                    onFocus:function(){
-//                        console.log('focused');
-//                    }
-//                });
+
                 obj.text = text;
                 obj.image = image;
-//                obj.hotspot = hotspot;
                 self.elems.push(obj);
             });
         });
@@ -60,7 +49,6 @@
             this.elems.forEach(function(elem){
                 elem.text.remove();
                 elem.image.remove();
-//                elem.hotspot.remove();
             });
             scene.remove(self);
         };

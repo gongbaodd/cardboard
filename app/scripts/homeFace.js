@@ -17,7 +17,7 @@
         this.remove = function() {
             this.background.remove();
             this.Lights.remove();
-            
+            this.cards.remove();
             scene.removeFace(this);
         };
     }
