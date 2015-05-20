@@ -5,6 +5,7 @@
     "bootstrap-sass-official": "~3.3.1",
     "modernizr": "~2.8.1",
     "helvetiker_regular.typeface": "http://mrdoob.github.io/three.js/examples/fonts/helvetiker_regular.typeface.js",
-    "jquery-router-plugin": "https://github.com/camme/jquery-router-plugin.git"
+    "jquery-router-plugin": "https://github.com/camme/jquery-router-plugin.git",
+    "threejs": "*"
   }
 }
