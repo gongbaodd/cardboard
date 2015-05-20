@@ -14,7 +14,7 @@
         this.cursor = cursor;
         
         //Debug
-        scene.showHotspots = true;
+        scene.showHotspot = true;
         scene.showStats = true;
         if(scene.showStats){
             scene.updatables.push(function(){

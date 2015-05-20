@@ -5,10 +5,24 @@
         THREE.Object3D.call(this);
         scene.face = this;
         
-        this.back = new w.Skydom(scene);
+        this.background = new w.Skydom(scene);
         
+        this.Lights = new w.Lights(scene);
+        
+        this.cards = new w.Cards(scene,camera,w.manifest);
+        
+        
+//        self.cards = new w.Cards(scene,camera,[]);
+//        
+//        scene.add(self);
+        
+//        console.log(scene);
+        
+     
         this.remove = function() {
-            this.back.remove();
+            this.background.remove();
+            this.Lights.remove();
+            
             scene.removeFace(this);
         };
     }

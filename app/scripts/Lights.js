@@ -10,7 +10,7 @@
         scene.add(this.direct);
         
         this.point = new THREE.PointLight(0xffffff,1.0);
-        this.pointLight.position.set(5,0,0);
+        this.point.position.set(5,0,0);
         scene.add(this.point);
         
         var self = this;
@@ -22,4 +22,6 @@
     }
     Lights.prototype = Object.create(THREE.Object3D.prototype);
     Lights.prototype.constructor = Lights;
+    
+    w.Lights = Lights;
 })(window);
