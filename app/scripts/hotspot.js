@@ -16,7 +16,11 @@
         this.rectShape = rectShape;
         
         var rectGeom = new THREE.ShapeGeometry(rectShape);
-        var rectMesh = new THREE.Mesh(rectGeom,new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:args.showHotspot?0.5:0.0}));
+        var rectMesh = new THREE.Mesh(rectGeom,new THREE.MeshBasicMaterial({
+            color:0xff0000,
+            transparent: true,
+            opacity: args.showHotspot?0.5:0.0
+        }));
         
 
         this.rectMesh = rectMesh;
@@ -40,7 +44,10 @@
             scene.remove(this);
         };
 
-        console.log(123);
+
+	   this.onFocus = args.onFocus;
+	   this.onBlur = args.onBlur;
+
     }
     Hotspot.prototype = Object.create(THREE.Object3D.prototype);
     Hotspot.prototype.constructor = Hotspot;

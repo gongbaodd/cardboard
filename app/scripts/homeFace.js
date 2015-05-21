@@ -12,7 +12,6 @@
         this.cards = new w.Cards(scene,camera,w.manifest);
 
 //        scene.add(self);
-
      
         this.remove = function() {
             this.background.remove();

@@ -33,7 +33,7 @@
                     verticalDegree:vdegree+20,
                     radius:radius,
                     onFocus:function(){
-                        location.hash = '#!/'+elem.url;
+                        location.hash = '#!/app/'+elem.url;
                     }
                 });
 

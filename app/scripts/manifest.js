@@ -1,16 +1,16 @@
 window.manifest = [{
             title:'Panorama',
             icon:'../images/apps/panorama.jpg',
-            url:'app/panorama',
+            url:'panorama',
             face:'PanoFace'
         },{
             title:'Movie',
             icon:'../images/apps/movie.jpg',
-            url:'app/movie',
+            url:'movie',
             face:'MovieFace'
         },{
             title:'NoodleFace',
             icon:'../images/apps/noodle_face.jpg',
-            url:'app/noodle_face',
+            url:'noodle_face',
             face:'NoodleFace'
 }];

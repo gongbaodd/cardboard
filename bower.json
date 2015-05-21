@@ -6,6 +6,7 @@
     "modernizr": "~2.8.1",
     "helvetiker_regular.typeface": "http://mrdoob.github.io/three.js/examples/fonts/helvetiker_regular.typeface.js",
     "jquery-router-plugin": "https://github.com/camme/jquery-router-plugin.git",
-    "threejs": "*"
+    "threejs": "*",
+    "has": "https://gist.githubusercontent.com/jonobr1/4660204/raw/6f21e54a79a99642bea928ad9f7eb3e9c7c6c43f/has.js"
   }
 }
