@@ -122,7 +122,7 @@
                 elem.remove();
             });
             scene.removeFace(this);
-        }
+        };
     }
     PanoFace.prototype = Object.create(THREE.Object3D.prototype);
     PanoFace.prototype.constructor = PanoFace;
