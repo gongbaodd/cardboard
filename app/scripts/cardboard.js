@@ -4,7 +4,10 @@
 
     function Cardboard() {
         //renderer
-        this.renderer = new T.WebGLRenderer({antialias:true});
+        this.renderer = new T.WebGLRenderer({
+            antialias:true,
+            alpha:true
+        });
         this.renderer.setSize(w.innerWidth,w.innerHeight);
         this.renderer.shadowMapEnabled = true;
         //scene

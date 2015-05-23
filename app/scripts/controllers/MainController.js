@@ -14,14 +14,16 @@
         this.cursor = cursor;
         
         //Debug
-        scene.showHotspot = false;
-        scene.showStats = false;
+        scene.showHotspot = true;
+        scene.showStats = true;
         if(scene.showStats){
             scene.updatables.push(function(){
                 w.stats.update();
             });
         }
-        
+//        var axes = new THREE.AxisHelper(10);
+//        scene.add(axes);
+//        console.log(camera)
         //Start Home
 
         var face = new w.HomeFace(scene,camera);
@@ -47,16 +49,18 @@
             this.camera.position,
             gaze.sub(this.camera.position).normalize()
         );
+//        debugger;
         
         var intersects = this.raycaster.intersectObjects(this.intersectables);
         
         //cursur
         this.cursor.scale.set(1,1,1);
         
-//        console.log(intersects);
 
         if(intersects.length>0){
             var found = intersects[0];
+            
+//            console.log(intersects);
             
             if(!this.selected){
                 w.navigator.vibrate(30);

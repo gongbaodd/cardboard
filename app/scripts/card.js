@@ -34,6 +34,9 @@
                     radius:radius,
                     onFocus:function(){
                         location.hash = '#!/app/'+elem.url;
+                    },
+                    onBlur:function(){
+//                        console.log();
                     }
                 });
 

@@ -14,16 +14,21 @@
             'PANO5.jpg',
             'PANO6.jpg'
         ];
-
-        this.background = new w.Panorama(scene,'../images/panorama/'+this.pictures[0]);
-        this.background.name = this.pictures[0];
+        
+        this.background = {};
 
         if(location.hash === '#!/app/panorama'){
+            this.background.name = this.pictures[0];
             location.hash += '/'+this.background.name;
+            this.background = new w.Panorama(scene,'../images/panorama/'+this.background.name);
+        }else{
+            var hash = location.hash.split('/');
+            this.background.name = hash[hash.length-1];
+            this.background = new w.Panorama(scene,'../images/panorama/'+this.background.name);
         }
 
 
-        this.lights = new w.Lights(scene);
+        this.lights = new w.Lights(scene,camera);
         this.elems = [];
 
         var self = this;
@@ -46,11 +51,16 @@
 		      showHotspot: scene.showHotspots,
 		      onFocus: function(){
 //                  console.log(self.background.name)
+                  var hash = location.hash.split('/');
+                  self.background.name = self.background.name || hash[hash.length-1];
                   var index = self.pictures.indexOf(self.background.name);
                   var newIndex = (index+1)%self.pictures.length;
+                  
+//                  console.log(location.hash)
 
                   self.background.remove();
                   self.background = new w.Panorama(scene,'../images/panorama/'+self.pictures[newIndex]);
+                  location.hash = location.hash.replace(self.pictures[index],self.pictures[newIndex]);
                   self.background.name = self.pictures[newIndex];
 		      }
 	       });
@@ -103,11 +113,14 @@
 		      radius: 15,
 		      showHotspot: scene.showHotspots,
 		      onFocus: function(){
-				var index = self.pictures.indexOf(self.background.name);
+                  var hash = location.hash.split('/');
+                  self.background.name = self.background.name || hash[hash.length-1];
+                  var index = self.pictures.indexOf(self.background.name);
                   var newIndex = (index+self.pictures.length-1)%self.pictures.length;
 
                   self.background.remove();
                   self.background = new w.Panorama(scene,'../images/panorama/'+self.pictures[newIndex]);
+                  location.hash = location.hash.replace(self.pictures[index],self.pictures[newIndex]);
                   self.background.name = self.pictures[newIndex];
 		      }
 	       });

@@ -29,6 +29,7 @@
         
         w.scene = cardboard.scene;
         w.camera = cardboard.camera;
+        w.cursor = cursor;
 
         document.getElementById('scene').appendChild(cardboard.renderer.domElement);
     }main();

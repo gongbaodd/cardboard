@@ -43,7 +43,7 @@
 //        console.log(face instanceof w[elem.face])
         if(!(face instanceof w[elem.face])){
             face.remove();
-            var newFace = new w[elem.face](w.scene.controller,w.camera);
+            var newFace = new w[elem.face](w.scene.controller,w.camera,w.cursor);
             face = newFace;
         }
     }
