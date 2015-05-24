@@ -25,7 +25,7 @@
         
         this.remove = function(){
             scene.remove(this.cube);
-        }
+        };
         
     }
     cube.prototype = Object.create(THREE.Object3D.prototype);

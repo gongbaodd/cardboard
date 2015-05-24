@@ -29,7 +29,7 @@
         scene.add(this.plane);
         this.remove = function(){
             scene.remove(this.plane);
-        }
+        };
         
     }
     Plane.prototype = Object.create(THREE.Object3D.prototype);

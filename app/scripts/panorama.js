@@ -9,7 +9,7 @@
             new THREE.MeshBasicMaterial({
                 map:THREE.ImageUtils.loadTexture(textureUrl),
                 transparent:args.transparent || false,
-                opacity:0.5
+                opacity:1
             })
         );
         

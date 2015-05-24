@@ -52,7 +52,7 @@
             if(this.intersectable){
                 scene.intersectables.splice($.inArray(this.cube,scene.intersectables),1);
             }
-        }
+        };
     }
     seat.prototype = Object.create(w.Cube.prototype);
     seat.prototype.constructor = seat;

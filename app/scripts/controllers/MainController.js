@@ -14,13 +14,13 @@
         this.cursor = cursor;
         
         //Debug
-        scene.showHotspot = true;
-        scene.showStats = true;
-        if(scene.showStats){
-            scene.updatables.push(function(){
-                w.stats.update();
-            });
-        }
+//        scene.showHotspot = false;
+//        scene.showStats = false;
+//        if(scene.showStats){
+//            scene.updatables.push(function(){
+//                w.stats.update();
+//            });
+//        }
 //        var axes = new THREE.AxisHelper(10);
 //        scene.add(axes);
 //        console.log(camera)
