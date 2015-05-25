@@ -57,7 +57,7 @@ WebGL是一种3D绘图标准，这种标准允许把JavaScript和OpenGL ES 2.0�
 
 1. 第一章为绪论，主要阐述本文研究的意义和背景，并根据需要了解了一些国内外发展的状况。
 2. 第二章介绍本产品开发时的开发环境、运用到的相关技术的简介。
-3. 第三章详细介绍
+3. 第三章详细介绍本产品所使用的算法，以及实现。
 
 ##相关技术及工具简介
 本章对产品的开发环境、使用的编程语言、相关技术以及开发模式的介绍。
@@ -113,8 +113,101 @@ JQuery是继prototype之后又一个优秀的Javascript库。它是轻量级的j
 ####WebRTC简介
 WebRTC（Web Real-Time Communication）实现了基于网页的视频会议，标准是WHATWG 协议，目的是通过浏览器提供简单的javascript就可以达到实时通讯（Real-Time Communications (RTC)）能力。WebRTC项目的最终目的主要是让Web开发者能够基于浏览器（Chrome\FireFox\...）轻易快捷开发出丰富的实时多媒体应用，而无需下载安装任何插件，Web开发者也无需关注多媒体的数字信号处理过程，只需编写简单的Javascript程序即可实现，W3C等组织正在制定Javascript 标准API，目前是WebRTC 1.0版本，Draft状态；另外WebRTC还希望能够建立一个多互联网浏览器间健壮的实时通信的平台，形成开发者与浏览器厂商良好的生态环境。同时，Google也希望和致力于让WebRTC的技术成为HTML5标准之一。本文第三个示例应用（NoodleFace）使用了此技术。
 
+###服务端环境介绍
+####Raspberry Pi 2
+Raspberry Pi是一款针对电脑业余爱好者、教师、小学生以及小型企业等用户的迷你电脑，预装Linux系统，体积仅信用卡大小，搭载ARM架构处理器，运算性能和智能手机相仿。目前为止，通过开发者社区的共同努力，Raspberry Pi 电脑已经可以运行 WebKit、LibreOffice、Scratch、Pixman、XBMC/Kodi、libav、PyPy、Raspbian、Ubuntu 等众多开源系统和程序。
+
+Raspberry Pi 2 的基本配置如下：
+
+* 900MHz 主频四核 ARM Cortex-A7 处理器（博通 BCM2836）
+* 两块 1G LPDDR2 SDRAM （Micron）
+* 两个全尺寸 USB 接口（可用于供电）
+* 一个 microUSB 接口
+* 一个全尺寸 HDMI 接口
+* 3.5 毫米音频接口
+* RJ45 以太网线接口
+
+####Koa
+Koa是基于Node.js平台的下一代web开发框架它由 Express 原班人马打造的，致力于成为一个更小、更富有表现力、更健壮的 Web 框架。使用 koa 编写 web 应用，通过组合不同的 generator，可以免除重复繁琐的回调函数嵌套，并极大地提升错误处理的效率。koa 不在内核方法中绑定任何中间件，它仅仅提供了一个轻量优雅的函数库，使得编写 Web 应用变得得心应手。
+
 ###开发模式介绍
 本文使用增量模型，在增量模型中，软件被作为一系列的增量构件来设计、实现、集成和测试，每一个构件是由多种相互作用的模块所形成的提供特定功能的代码片段构成. 增量模型在各个阶段并不交付一个可运行的完整产品，而是交付满足客户需求的一个子集的可运行产品。整个产品被分解成若干个构件，开发人员逐个构件地交付产品，这样做的好处是软件开发可以较好地适应变化，客户可以不断地看到所开发的软件，从而降低开发风险。
 
+##相关的算法和实现
+###双目立体图像对的生成算法
+有些3D引擎提供了必要的工具来创建正确的立体图像，其他的引擎需要适当的几何变换来生成立体图像对，更多渲染包只提供简单的透视投影。本文使用的算法适用于所有能够实现透视投影的引擎。
+
+创建立体图像对的选择涉及到两眼间距隔开的两个位置同时绘制左右两眼的视图。眼睛沿着平行的两个向量，从投射到每个眼睛的光束形成的视锥是不对称的。本方案通过扩展视锥使得每个眼睛的视锥对称并在渲染图像之后将扩展的地方裁剪出来，如图2所示。
+
+![离轴平行立体成像原理](http://paulbourke.net/stereographics/stereorender/raystereo2.gif)
+
+剩下的就是计算只需要给出合适的眼间距和焦距，渲染图往往比原图更大一些，这样裁剪之后才能和原图一样大偏移量的大小取决于给定的焦距大小需要裁剪掉的大小如公式1所示。
+
+<table cellpadding="0" cellspacing="0" border="0">
+<tbody><tr>
+<td>&nbsp;</td>
+<td align="center">e w</td><td>
+</td></tr>
+<tr>
+<td align="right">delta =</td>
+<td><hr></td><td>
+</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center">2 f<sub>o</sub> tan(a / 2)</td><td>
+</td></tr>
+</tbody></table>
+
+w是图像宽度，fo是焦距，e是眼间距，a是预测光圈大小，为了得到准确的光圈大小，还要在图像裁切之后修改为实际值如公式2。
+
+<table cellpadding="0" cellspacing="0" border="0">
+<tbody><tr>
+<td>&nbsp;</td>
+<td align="center">(w + delta) tan(a/2)</td><td>
+</td></tr>
+<tr>
+<td align="right">a' = 2 atan</td>
+<td><hr></td><td>
+</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center">w</td><td>
+</td></tr>
+</tbody></table>
+
+###方向感应算法
+智能手机的方向传感器作为本产品的输入设备，将传感器获取的离散信息处理成方向信息并利用此信息生成对应的虚拟图像是非常重要的，接下来先介绍以一下智能手机的传感器。
+
+地球坐标系使用的是“东、北、上”三个方向作为坐标系，而对于智能手机也利用的此标准，x轴是当屏幕面对用户由屏幕中央指向右手边的方向，y轴由屏幕中央指向上方，而z轴则垂直屏幕指向用户，如图3所示。
+
+![图3 智能手机传感器的坐标系](http://w3c.github.io/deviceorientation/start.png)
+
+旋转设备，传感器会向浏览器传回4个值，alpha为设备绕z轴旋转的偏移量，如图4，大小为0至360；beta是设备绕x轴旋转的偏移量，如图5，取值区间为-180~180；gamma则是绕y轴旋转的角度，如图6，区间为-90~90；absolute在传感器运行时始终为false。
+
+![图4 alpha](http://w3c.github.io/deviceorientation/c-rotation.png)
+![图5 beta](http://w3c.github.io/deviceorientation/a-rotation.png)
+![图6 gamma](http://w3c.github.io/deviceorientation/b-rotation.png)
+
+在佩戴CardBoard的时候，用户面对着手机，手机横放。根据智能手机坐标系，用户观看的向量为v，其值如公式3
+
+![公式3](http://w3c.github.io/deviceorientation/equation1.png)
+
+相应的旋转z、x、y轴获得的变换矩阵如公式4、公式5、公式6。
+
+![公式4](http://w3c.github.io/deviceorientation/equation2.png)
+![公式5](http://w3c.github.io/deviceorientation/equation3.png)
+![公式6](http://w3c.github.io/deviceorientation/equation4.png)
+
+可得R为全部的变换公式，如公式7。
+
+![公式7](http://w3c.github.io/deviceorientation/equation13a.png)
+
+经过变换获得的v'如公式8.
+
+![公式8](http://w3c.github.io/deviceorientation/equation5e.png)
+
+由此可得用户的偏移角度，如公式9.
+
+![公式9](http://w3c.github.io/deviceorientation/equation6.png)
 
 
