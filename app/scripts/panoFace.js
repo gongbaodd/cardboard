@@ -24,6 +24,9 @@
         }else{
             var hash = location.hash.split('/');
             this.background.name = hash[hash.length-1];
+            if(!this.pictures[this.background.name]){
+                this.background.name = this.pictures[0];
+            }
             this.background = new w.Panorama(scene,'../images/panorama/'+this.background.name);
         }
 
