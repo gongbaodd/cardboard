@@ -10,6 +10,14 @@
     <script src="bower_components/mocha/mocha.js"></script>
     <script>mocha.setup('bdd')</script>
     <script src="bower_components/chai/chai.js"></script>
+    <script src="home/bower_components/has/index.js"></script>
+    <script src="home/bower_components/jquery/dist/jquery.js"></script>
+    <script src="home/bower_components/threejs/build/three.js"></script>
+    <script src="home/bower_components/helvetiker_regular.typeface/index.js"></script>
+    <script src="home/bower_components/threejs/examples/js/effects/StereoEffect.js"></script>
+    <script src="home/bower_components/threejs/examples/js/controls/DeviceOrientationControls.js"></script>
+    <script src="home/bower_components/threejs/examples/js/controls/OrbitControls.js"></script>
+    <script src="home/bower_components/threejs/examples/js/libs/stats.min.js"></script>
     <script>
         var assert = chai.assert;
         var expect = chai.expect;
@@ -17,10 +25,30 @@
     </script>
 
     <!-- bower:js -->
+    <script src="bower_components/should/should.js"></script>
     <!-- endbower -->
 
     <!-- include source files here... -->
-
+        <script src="home/app/scripts/manifest.js"></script>
+        <script src="home/app/scripts/cardboard.js"></script>
+        <script src="home/app/scripts/hotspot.js"></script>
+        <script src="home/app/scripts/image.js"></script>
+        <script src="home/app/scripts/text.js"></script>
+        <script src="home/app/scripts/Lights.js"></script>
+        <script src="home/app/scripts/card.js"></script>
+        <script src="home/app/scripts/panorama.js"></script>
+        <script src="home/app/scripts/skydom.js"></script>
+        <script src="home/app/scripts/geometries/plane.js"></script>
+        <script src="home/app/scripts/geometries/cube.js"></script>
+        <script src="home/app/scripts/geometries/seat.js"></script>
+        <script src="home/app/scripts/cursor.js"></script>
+        <script src="home/app/scripts/homeFace.js"></script>
+        <script src="home/app/scripts/panoFace.js"></script>
+        <script src="home/app/scripts/movieFace.js"></script>
+        <script src="home/app/scripts/noodleFace.js"></script>
+        <script src="home/app/scripts/controllers/MainController.js"></script>
+        <script src="home/app/scripts/routers.js"></script>
+        <script src="spec/main.js"></script>
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
 

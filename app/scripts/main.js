@@ -32,5 +32,6 @@
         w.cursor = cursor;
 
         document.getElementById('scene').appendChild(cardboard.renderer.domElement);
+        var router = new w.Router(cardboard.scene,cardboard.camera,cursor);
     }main();
 })(window);

@@ -19,6 +19,7 @@
 //        var axes = new THREE.AxisHelper(20);
 //        scene.add(axes);
         this.screen = {};
+        this.screen.remove = function(){};
         
         scene.fog = new THREE.Fog(0xffffff,0.015,10);
         

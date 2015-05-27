@@ -118,6 +118,30 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest('app'));
 });
 
+//gulp.task('jshint:test', $.jshint('test/spec/test.js'));
+
+gulp.task('test', function() {
+    browserSync({
+        notify: false,
+        open: false,
+        port: 9000,
+        ui: false,
+        server: {
+            baseDir: 'test',
+            routes: {
+                '/home': '.',
+                '/images':'app/images'
+            }
+        }
+    });
+
+    gulp.watch([
+        'test/spec/test.js',
+    ]).on('change', reload);
+
+//    gulp.watch('test/spec/test.js', ['jshint:test']);
+});
+
 gulp.task('build', [ 'html', 'images', 'fonts', 'extras'], function () {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
